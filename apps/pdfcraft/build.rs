@@ -11,7 +11,7 @@ mod windows_manifest;
 
 fn main() {
     println!("cargo:rerun-if-changed=build.rs");
-    println!("cargo:rerun-if-changed=../../assets/app-icon/pdfcraft.ico");
+    println!("cargo:rerun-if-changed=../../assets/app-icon/tspdf.ico");
     println!("cargo:rerun-if-changed=../../assets/app-icon/pdfcraft-document.ico");
     println!("cargo:rerun-if-changed=src/windows_manifest.rs");
     println!("cargo:rerun-if-env-changed=PDFCRAFT_REQUIRE_WINRES");
@@ -19,19 +19,20 @@ fn main() {
         return;
     }
     let mut res = winresource::WindowsResource::new();
-    res.set_icon("../../assets/app-icon/pdfcraft.ico")
+    res.set_icon("../../assets/app-icon/tspdf.ico")
         .set_icon_with_id("../../assets/app-icon/pdfcraft-document.ico", "2")
         .set_manifest(windows_manifest::WINDOWS_MANIFEST)
-        .set("ProductName", "PdfCraft")
-        .set("FileDescription", "PdfCraft PDF workbench")
-        .set("LegalCopyright", "Copyright (c) the PdfCraft contributors. MIT OR Apache-2.0.")
-        .set("OriginalFilename", "pdfcraft.exe")
-        .set("InternalName", "pdfcraft");
+        .set("ProductName", "TSPdf")
+        .set("CompanyName", "Solusi Daya Indonesia")
+        .set("FileDescription", "TSPdf PDF workbench")
+        .set("LegalCopyright", "Copyright (c) Solusi Daya Indonesia. MIT OR Apache-2.0.")
+        .set("OriginalFilename", "tspdf.exe")
+        .set("InternalName", "tspdf");
     if let Err(e) = res.compile() {
         if std::env::var_os("PDFCRAFT_REQUIRE_WINRES").is_some() {
             println!("cargo::error=embedding Windows resources failed: {e}");
             return;
         }
-        println!("cargo:warning=pdfcraft.exe built without icon/version resources: {e}");
+        println!("cargo:warning=tspdf.exe built without icon/version resources: {e}");
     }
 }
