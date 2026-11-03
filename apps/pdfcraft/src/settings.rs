@@ -20,7 +20,7 @@ pub fn directory(
     }
     // XDG requires absolute environment paths; empty and relative overrides are ignored.
     let preferred = config_home.filter(|p| p.is_absolute()).or_else(|| home.filter(|p| p.is_absolute()).map(|p| p.join(".config")));
-    let Some(preferred) = preferred.map(|p| p.join("pdfcraft")) else { return Ok(legacy) };
+    let Some(preferred) = preferred.map(|p| p.join("tspdf")) else { return Ok(legacy) };
     let target = preferred.join("app.ron");
     if std::fs::symlink_metadata(&target).is_ok() {
         return Ok(Some(preferred));
@@ -93,7 +93,7 @@ mod tests {
         let fixture = Fixture::new();
         let home = fixture.0.join("home");
         let data = home.join(".local/share/pdfcraft");
-        assert_eq!(directory(true, None, Some(data), None, Some(home.clone())).unwrap(), Some(home.join(".config/pdfcraft")));
+        assert_eq!(directory(true, None, Some(data), None, Some(home.clone())).unwrap(), Some(home.join(".config/tspdf")));
     }
 
     struct Fixture(PathBuf);
