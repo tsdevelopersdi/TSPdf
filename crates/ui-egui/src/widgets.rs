@@ -603,17 +603,20 @@ pub fn progress_notice(app: &PdfCraftApp, ctx: &egui::Context) -> bool {
 }
 
 /// Formerly the ArtCraft wordmark (removed in TSPdf fork).
+#[allow(dead_code)]
 pub fn artcraft_logo(ui: &mut egui::Ui, _height: f32) -> Response {
     ui.label("")
 }
 
 /// Formerly the ArtCraft mark (removed in TSPdf fork).
+#[allow(dead_code)]
 pub fn artcraft_mark(ui: &mut egui::Ui, _size: f32) -> Response {
     ui.label("")
 }
 
 /// Buttons for every community link (`pdfcraft_engine::links`), Discord first and prominent.
 /// Returns the registry command of the one clicked.
+#[allow(dead_code)]
 pub fn community_links(ui: &mut egui::Ui) -> Option<&'static str> {
     let mut clicked = None;
     ui.horizontal_wrapped(|ui| {
