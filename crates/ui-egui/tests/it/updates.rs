@@ -11,7 +11,7 @@ fn release(tag: &str) -> craft_update::Release {
     craft_update::Release {
         tag: tag.to_string(),
         version: craft_update::parse_version(tag),
-        html_url: format!("https://github.com/storytold/pdfcraft/releases/tag/{tag}"),
+        html_url: format!("https://github.com/tsdevelopersdi/TSPdf/releases/tag/{tag}"),
         ..Default::default()
     }
 }
@@ -118,4 +118,15 @@ fn the_check_at_start_offers_the_prompt_and_later_dismisses_it() {
     h.get_by_label("LATER").click();
     h.run_steps(3);
     assert!(h.query_by_label_contains("is available").is_none(), "Later closes the prompt");
+}
+
+/// TSPdf updates come only from Tech Services SDI's repository, under TSPdf's own asset names, so
+/// an upstream merge can't quietly point users back at PdfCraft releases.
+#[test]
+fn updates_come_from_the_tspdf_repository() {
+    let app = &pdfcraft_ui_egui::UPDATE_APP;
+    assert_eq!(app.repo, "tsdevelopersdi/TSPdf");
+    assert_eq!(app.id, "tspdf");
+    assert!(app.former_ids.is_empty() && app.former_names.is_empty());
+    assert_eq!(app.releases_url(), pdfcraft_ui_egui::updates::RELEASES_PAGE);
 }

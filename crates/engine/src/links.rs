@@ -10,7 +10,8 @@ pub const APP: &str = "pdfcraft";
 pub const DISCORD: &str = "https://discord.gg/artcraft";
 pub const WEBSITE: &str = "https://getartcraft.com";
 pub const APP_PAGE: &str = "https://getartcraft.com/apps/pdfcraft";
-pub const GITHUB: &str = "https://github.com/storytold/pdfcraft";
+/// TSPdf's own repository (Tech Services SDI), where its releases and updates are published.
+pub const GITHUB: &str = "https://github.com/tsdevelopersdi/TSPdf";
 
 /// A link and the registry command that opens it.
 #[derive(Clone, Copy, Debug)]

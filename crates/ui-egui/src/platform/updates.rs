@@ -9,8 +9,8 @@ use craft_update::{CheckResultDialog, CheckResultResponse};
 
 use crate::PdfCraftApp;
 
-/// Where every PdfCraft release is listed.
-pub const RELEASES_PAGE: &str = "https://github.com/storytold/pdfcraft/releases";
+/// Where every TSPdf release is listed (Tech Services SDI's repository, as in [`crate::UPDATE_APP`]).
+pub const RELEASES_PAGE: &str = "https://github.com/tsdevelopersdi/TSPdf/releases";
 
 /// Stands in for the network in tests.
 #[cfg(not(target_arch = "wasm32"))]

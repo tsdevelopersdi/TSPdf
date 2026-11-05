@@ -9,10 +9,20 @@
 // The settings object in `persist` is one `json!` literal past the default limit of 128.
 #![recursion_limit = "256"]
 
-/// PdfCraft as craft-update knows it, with its 128 px icon and accent colour: the update
+/// TSPdf as craft-update knows it, with its 128 px icon and accent colour: the update
 /// prompt shows both, and an AppImage's menu entry gets the icon.
+///
+/// Updates come from Tech Services SDI's own releases (`tsdevelopersdi/TSPdf`), never from the
+/// upstream PdfCraft repository: its assets are `tspdf-<version>-<os>-<arch>.<ext>` plus
+/// `SHA256SUMS.txt`, matching what `packaging/windows/package.ps1` builds. No former ids or
+/// names, so an upstream PdfCraft install on the same machine is never taken for this app.
 #[cfg(not(target_arch = "wasm32"))]
 pub const UPDATE_APP: craft_update::app::App = craft_update::app::App {
+    id: "tspdf",
+    repo: "tsdevelopersdi/TSPdf",
+    tagline: "Read, edit, merge, split and sign PDFs",
+    former_ids: &[],
+    former_names: &[],
     name: "TSPdf",
     developer: "Solusi Daya Indonesia",
     icon_png: Some(include_bytes!("../../../assets/app-icon/hicolor/128x128/apps/ai.storyteller.pdfcraft.png")),
